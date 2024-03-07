@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
 <body>
 
 <input  type="number" placeholder="enter your chemistry marks" id="chem-marks"><br><br>
@@ -14,4 +14,54 @@
  
  <h1>Grade :<span id="grade">F</span></h1>
 </body>
- </html>
+ </html> -->
+ <html>
+<head>
+    <title>Grade Calculator</title>
+</head>
+<body>
+
+    <input type="number" placeholder="enter your chemistry marks" id="chem-marks"><br><br>
+    <input type="number" placeholder="enter your physics marks" id="phy-marks"><br><br>
+    <input type="number" placeholder="enter your maths marks" id="math-marks"><br><br>
+    <input type="number" placeholder="enter your computer marks" id="com-marks"><br><br>
+
+    <button onclick="calculatePercentage()">Show Result</button>
+
+    <h1>Total Marks: <span id="total-marks">0</span></h1>
+    <h1>Total Percentage: <span id="percentage">0%</span></h1>
+    <h1>Grade: <span id="grade">F</span></h1>
+
+    <script>
+        var chemmarks = document.querySelector('#chem-marks');
+        var phymarks = document.querySelector('#phy-marks');
+        var mathmarks = document.querySelector('#math-marks');
+        var commarks = document.querySelector('#com-marks');
+        var TotalMarksElement = document.querySelector('#total-marks');
+        var PercentageElement = document.querySelector('#percentage');
+        var GradeElement = document.querySelector('#grade');
+
+        function calculatePercentage() {
+            var TotalMarks = 400;
+            var obtainedMarks = +chemmarks.value + +phymarks.value + +mathmarks.value + +commarks.value;
+
+            TotalMarksElement.innerHTML = obtainedMarks;
+
+            var StudentPercentage = (obtainedMarks / TotalMarks) * 100;
+
+            PercentageElement.innerHTML = StudentPercentage.toFixed(2) + "%";
+
+            if (StudentPercentage > 80) {
+                GradeElement.innerHTML = 'A+';
+            } else if (StudentPercentage > 70) {
+                GradeElement.innerHTML = 'A';
+            } else if (StudentPercentage > 60) {
+                GradeElement.innerHTML = 'B';
+            } else if (StudentPercentage < 50) {
+                GradeElement.innerHTML = 'F';
+            }
+        }
+    </script>
+
+</body>
+</html>
